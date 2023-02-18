@@ -1,47 +1,38 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h1 class="text">Write your text in the text box</h1>
+  <br />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <input v-model="text" placeholder="write here" class="filter text"/>
+  <button @click="countTheWords()" role="button">count!</button>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <br />
+    <p v-if="quantity">Number of words: {{ quantity }} </p>
+    <p v-else>some text input is required</p>
+  </div>
+
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+<script>
+export default {
+  data() {
+    return {
+      loading: false,
+      text: '',
+      quantity: '',
+    }
+  },
+  methods: {
+  
+    countTheWords() {
+      fetch(`http://127.0.0.1:5000/count/${this.text}`)
+        .then(response => response.json())
+        .then(data => this.quantity = data)
+    }
+  },
+  click() {
+    this.countTheWords()
   }
 }
-</style>
+
+</script>

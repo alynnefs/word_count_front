@@ -1,28 +1,52 @@
-# word_count_front
+# Word Count - Front
+    
+This project is the front of [Word Count - Back](https://github.com/alynnefs/word_count_back/). The detailed information is described there.
 
-This template should help get you started developing with Vue 3 in Vite.
+## Running with Docker
 
-## Recommended IDE Setup
+To create the docker image, run the following command in the project root:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```
+docker build -t cw-front .
+```
 
-## Customize configuration
+The result should be
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+![](https://i.imgur.com/fBR9Rws.png)
 
-## Project Setup
+After created, run the container with:
+
+```
+docker run -it -p 8080:8080 --rm --name cw-front-1 cw-front
+```
+
+The output should look similar to this:
+
+![](https://i.imgur.com/dZXZbIz.png)
+
+Since the server is "open", it is not so necessary to check the container. But if you want to look anyway, just use the `docker container ls` command. The output should look something like this:
+
+![](https://i.imgur.com/Ft9u6v3.png)
+
+## Running locally
+
+## Specifications used in development
+- NPM: 9.2.0
+- Vue/cli: 5.0.8
+
+## How to install
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Running locally
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### How to compile for production
 
 ```sh
 npm run build

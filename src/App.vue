@@ -1,14 +1,16 @@
 <template>
-  <h1 class="text">Write your text in the text box</h1>
-  <br />
-
-  <input v-model="text" placeholder="write here" class="filter text"/>
-  <button @click="countTheWords()" role="button">count!</button>
-
-  <div>
+  <div class="main">
+    <h1 class="text">Write your text in the text box</h1>
     <br />
-    <p v-if="quantity">Number of words: {{ quantity }} </p>
-    <p v-else>some text input is required</p>
+
+    <div>
+      <input v-model="text" placeholder="write here" class="filter text"/>
+      <button @click="countTheWords()" role="button">count!</button>
+
+      <br />
+      <p v-if="quantity">Number of words: {{ quantity }} </p>
+      <p v-else>some text input is required</p>
+    </div>
   </div>
 
 </template>

@@ -33,4 +33,4 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
         env:
-          VITE_BACKEND_URL: http://localhost:5000 # Mock ou URL de teste
+          VITE_BACKEND_URL: ${{ vars.VITE_BACKEND_URL || 'http://localhost:5001' }} # Mock ou URL de teste

@@ -16,6 +16,9 @@
 </template>
 
 <script>
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 export default {
   data() {
     return {
@@ -27,9 +30,13 @@ export default {
   methods: {
   
     countTheWords() {
-      fetch(`http://127.0.0.1:5000/count/${this.text}`)
+      fetch(`${BACKEND_URL}/count`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: this.text })
+      })
         .then(response => response.json())
-        .then(data => this.quantity = data)
+        .then(data => this.quantity = data.count)
     }
   },
   click() {

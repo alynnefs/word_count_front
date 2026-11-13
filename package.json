@@ -5,13 +5,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.vue --ignore-path .gitignore",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@vitejs/plugin-vue": "^4.0.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-vue": "^10.12.1",
     "vite": "^4.0.0"
   }
 }

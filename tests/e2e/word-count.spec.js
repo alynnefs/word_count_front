@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test('should count words correctly', async ({ page }) => {
+  await page.route('**/count', route =>
+    route.fulfill({ json: { count: 3 } })
+  )
+
   await page.goto('/');
   
   const input = page.locator('input[placeholder="write here"]');

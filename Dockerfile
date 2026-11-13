@@ -1,5 +1,9 @@
 FROM node:lts-alpine
 
+# Recebe a variável no build
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
 # install simple http server for serving static content
 RUN npm install -g http-server
 
@@ -19,4 +23,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 8080
-CMD [ "http-server", "dist" ]
+CMD [ "http-server", "dist", "-a", "0.0.0.0" ]
